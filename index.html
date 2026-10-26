@@ -179,6 +179,18 @@
   .admin .primary{background:var(--a-olive);border-color:var(--a-olive);color:#fff}
   .admin .primary:active{background:var(--a-olive-hi)}
 
+  /* ---------- language ---------- */
+  [data-ui-lang="en"] [data-lang="th"], [data-ui-lang="th"] [data-lang="en"]{display:none !important}
+  .lang-btn{width:227px;height:97px;cursor:pointer;isolation:auto}
+  .lang-btn img{position:absolute;left:0;top:0;width:227px;height:97px;transition:transform .15s, filter .3s, opacity .3s}
+  .lang-btn .lang-glow{mix-blend-mode:hard-light}
+  .lang-btn.pressed img{transform:scale(.94)}
+  .lang-btn.is-current{pointer-events:none}
+  .lang-btn.is-current .lang-pill{filter:grayscale(1) brightness(.5)}
+  .lang-btn.is-current .lang-glow{visibility:hidden}
+  /* switching language on Home: the newly shown text and buttons come in quickly */
+  #home.quick .line-in, #home.quick .rule, #home.quick .btn{animation-delay:calc(var(--d) * .3) !important}
+
   /* ---------- page transition cover ---------- */
   #fader{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;transition:opacity .35s ease}
   #fader.on{opacity:1;pointer-events:auto}
@@ -209,17 +221,31 @@
     </div></div>
 
     <!-- text glow layers (behind the text) -->
-    <img class="abs tglow" style="left:343px;top:182px;width:1227px;--fd:4.3s;--fdl:0s"   src="assets/text1.png" alt="">
-    <img class="abs tglow" style="left:517px;top:240px;width:878px;--fd:3.7s;--fdl:-1.2s" src="assets/text2.png" alt="">
-    <img class="abs tglow" style="left:529px;top:341px;width:855px;--fd:5.1s;--fdl:-2.6s" src="assets/text3.png" alt="">
+    <img class="abs tglow" data-lang="en" style="left:343px;top:182px;width:1227px;--fd:4.3s;--fdl:0s"   src="assets/text1.png" alt="">
+    <img class="abs tglow" data-lang="en" style="left:517px;top:240px;width:878px;--fd:3.7s;--fdl:-1.2s" src="assets/text2.png" alt="">
+    <img class="abs tglow" data-lang="en" style="left:529px;top:341px;width:855px;--fd:5.1s;--fdl:-2.6s" src="assets/text3.png" alt="">
 
     <!-- text lines, in reading order -->
     <img class="abs line-in" id="logoImg" style="left:833px;top:65px;width:246px;--d:.35s"  src="assets/logo.png"  alt="EGAT">
     <canvas class="abs" id="logoSweep" width="492" height="140"></canvas>
-    <img class="abs line-in" style="left:343px;top:182px;width:1227px;--d:.75s" src="assets/text1.png" alt="Powering Thailand's Sustainable Future">
-    <img class="abs line-in" style="left:517px;top:240px;width:878px;--d:1.05s" src="assets/text2.png" alt="Through Energy Innovation and Space Technology">
-    <img class="abs rule"    style="left:524px;top:301px;width:865px;--d:1.35s" src="assets/line.png"  alt="">
-    <img class="abs line-in" style="left:529px;top:341px;width:855px;--d:1.6s"  src="assets/text3.png" alt="Reliable Energy Today, Sustainable Tomorrow">
+    <img class="abs line-in" data-lang="en" style="left:343px;top:182px;width:1227px;--d:.75s" src="assets/text1.png" alt="Powering Thailand's Sustainable Future">
+    <img class="abs line-in" data-lang="en" style="left:517px;top:240px;width:878px;--d:1.05s" src="assets/text2.png" alt="Through Energy Innovation and Space Technology">
+    <img class="abs rule" data-lang="en" style="left:524px;top:301px;width:865px;--d:1.35s" src="assets/line.png"  alt="">
+    <img class="abs line-in" data-lang="en" style="left:529px;top:341px;width:855px;--d:1.6s"  src="assets/text3.png" alt="Reliable Energy Today, Sustainable Tomorrow">
+    <!-- Thai text lines -->
+    <img class="abs tglow" data-lang="th" style="left:341px;top:182px;width:1227px;--fd:4.3s;--fdl:0s" src="assets/th/title.png" alt="">
+    <img class="abs tglow" data-lang="th" style="left:583px;top:234px;width:730px;--fd:3.7s;--fdl:-1.2s" src="assets/th/sub1.png" alt="">
+    <img class="abs tglow" data-lang="th" style="left:583px;top:313px;width:730px;--fd:4.6s;--fdl:-.6s" src="assets/th/sub2.png" alt="">
+    <img class="abs tglow" data-lang="th" style="left:653px;top:396px;width:601px;--fd:5.1s;--fdl:-2.6s" src="assets/th/tagline.png" alt="">
+    <img class="abs line-in" data-lang="th" style="left:341px;top:182px;width:1227px;--d:.75s" src="assets/th/title.png" alt="Powering Thailand's Sustainable Future">
+    <img class="abs line-in" data-lang="th" style="left:583px;top:234px;width:730px;--d:1.0s" src="assets/th/sub1.png" alt="ขับเคลื่อนอนาคตที่ยั่งยืนของประเทศไทย">
+    <img class="abs line-in" data-lang="th" style="left:583px;top:313px;width:730px;--d:1.25s" src="assets/th/sub2.png" alt="ด้วยนวัตกรรมพลังงานและเทคโนโลยีอวกาศ">
+    <img class="abs rule" data-lang="th" style="left:653px;top:372px;width:603px;--d:1.5s" src="assets/th/line.png" alt="">
+    <img class="abs line-in" data-lang="th" style="left:653px;top:396px;width:601px;--d:1.75s" src="assets/th/tagline.png" alt="พลังงานไฟฟ้าที่มั่นคง ขับเคลื่อนอนาคตที่ยั่งยืน">
+
+    <!-- language buttons: the current language is greyed out; choose the other one to switch (Home page only) -->
+    <div class="abs lang-btn" data-setlang="en" style="left:1520px;top:58px;--d:.5s"><img class="lang-glow line-in" src="assets/th/lang-en-glow.png" alt=""><img class="lang-pill line-in" src="assets/th/lang-en.png" alt="English"></div>
+    <div class="abs lang-btn" data-setlang="th" style="left:1664px;top:58px;--d:.6s"><img class="lang-glow line-in" src="assets/th/lang-th-glow.png" alt=""><img class="lang-pill line-in" src="assets/th/lang-th.png" alt="ภาษาไทย"></div>
 
     <div id="menu"></div>
   </section>
@@ -239,12 +265,21 @@
     </div>
     <img class="abs cat" src="assets/who/label.png" style="left:84px;top:37px;width:101px" alt="Who We Are">
     <canvas class="abs cat-sweep" width="202" height="236" style="left:84px;top:37px;width:101px;height:118px"></canvas>
-    <img class="abs line-in" src="assets/who/title.png"    style="left:390px;top:91px;width:507px;--d:1.55s" alt="EGAT Mission">
-    <img class="abs rule"    src="assets/who/rule-top.png" style="left:384px;top:165px;width:1055px;--d:1.8s" alt="">
-    <img class="abs line-in" src="assets/who/p1.png"       style="left:386px;top:194px;width:1054px;--d:2.0s" alt="To provide secure, reliable, and affordable electricity while creating">
-    <img class="abs line-in" src="assets/who/p2.png"       style="left:386px;top:229px;width:1054px;--d:2.2s" alt="a sustainable energy future for Thailand, enhancing quality of life">
-    <img class="abs line-in" src="assets/who/p3.png"       style="left:386px;top:265px;width:1054px;--d:2.4s" alt="and supporting national and global climate goals.">
-    <img class="abs rule"    src="assets/who/rule-bot.png" style="left:384px;top:318px;width:1055px;--d:2.65s" alt="">
+    <img data-lang="en" class="abs line-in" src="assets/who/title.png"    style="left:390px;top:91px;width:507px;--d:1.55s" alt="EGAT Mission">
+    <img data-lang="en" class="abs rule"    src="assets/who/rule-top.png" style="left:384px;top:165px;width:1055px;--d:1.8s" alt="">
+    <img data-lang="en" class="abs line-in" src="assets/who/p1.png"       style="left:386px;top:194px;width:1054px;--d:2.0s" alt="To provide secure, reliable, and affordable electricity while creating">
+    <img data-lang="en" class="abs line-in" src="assets/who/p2.png"       style="left:386px;top:229px;width:1054px;--d:2.2s" alt="a sustainable energy future for Thailand, enhancing quality of life">
+    <img data-lang="en" class="abs line-in" src="assets/who/p3.png"       style="left:386px;top:265px;width:1054px;--d:2.4s" alt="and supporting national and global climate goals.">
+    <img data-lang="en" class="abs rule"    src="assets/who/rule-bot.png" style="left:384px;top:318px;width:1055px;--d:2.65s" alt="">
+    <!-- Thai text (TH_02_P1.psd) -->
+    <img data-lang="th" class="abs line-in" src="assets/who/th/p1.png" style="left:383px;top:97px;width:1325px;--d:1.55s" alt="">
+    <img data-lang="th" class="abs line-in" src="assets/who/th/p2.png" style="left:383px;top:135px;width:1325px;--d:1.70s" alt="">
+    <img data-lang="th" class="abs line-in" src="assets/who/th/p3.png" style="left:383px;top:174px;width:1325px;--d:1.85s" alt="">
+    <img data-lang="th" class="abs line-in" src="assets/who/th/p4.png" style="left:383px;top:212px;width:1325px;--d:2.00s" alt="">
+    <img data-lang="th" class="abs line-in" src="assets/who/th/p5.png" style="left:383px;top:251px;width:1325px;--d:2.15s" alt="">
+    <img data-lang="th" class="abs line-in" src="assets/who/th/p6.png" style="left:385px;top:312px;width:1174px;--d:2.30s" alt="">
+    <img data-lang="th" class="abs line-in" src="assets/who/th/p7.png" style="left:385px;top:344px;width:1174px;--d:2.45s" alt="">
+    <img data-lang="th" class="abs line-in" src="assets/who/th/p8.png" style="left:385px;top:389px;width:1174px;--d:2.60s" alt="">
     <div class="abs homeBtn" data-home style="left:1780px;top:58px"><img src="assets/who/home.png" alt="Home"></div>
   </section>
 
@@ -263,20 +298,28 @@
     </div>
     <img class="abs cat" src="assets/growth/label.png" style="left:31px;top:37px;width:224px" alt="Growth & Investment">
     <canvas class="abs cat-sweep" width="448" height="216" style="left:31px;top:37px;width:224px;height:108px"></canvas>
-    <img class="abs line-in" src="assets/growth/t1.png"       style="left:385px;top:92px;width:1202px;--d:1.55s" alt="Powering Thailand's Growth">
-    <img class="abs line-in" src="assets/growth/t2.png"       style="left:385px;top:161px;width:1202px;--d:1.75s" alt="and Investment">
-    <img class="abs rule"    src="assets/growth/rule-top.png" style="left:384px;top:241px;width:1206px;--d:2.0s" alt="">
-    <img class="abs line-in" src="assets/growth/p1.png"       style="left:385px;top:271px;width:1196px;--d:2.2s" alt="Thailand's electric power potential enables large-scale investments, industrial">
-    <img class="abs line-in" src="assets/growth/p2.png"       style="left:385px;top:305px;width:1196px;--d:2.4s" alt="expansion, smart cities, and future economic corridors.">
-    <img class="abs rule"    src="assets/growth/rule-bot.png" style="left:384px;top:362px;width:1206px;--d:2.65s" alt="">
+    <img data-lang="en" class="abs line-in" src="assets/growth/t1.png"       style="left:385px;top:92px;width:1202px;--d:1.55s" alt="Powering Thailand's Growth">
+    <img data-lang="en" class="abs line-in" src="assets/growth/t2.png"       style="left:385px;top:161px;width:1202px;--d:1.75s" alt="and Investment">
+    <img data-lang="en" class="abs rule"    src="assets/growth/rule-top.png" style="left:384px;top:241px;width:1206px;--d:2.0s" alt="">
+    <img data-lang="en" class="abs line-in" src="assets/growth/p1.png"       style="left:385px;top:271px;width:1196px;--d:2.2s" alt="Thailand's electric power potential enables large-scale investments, industrial">
+    <img data-lang="en" class="abs line-in" src="assets/growth/p2.png"       style="left:385px;top:305px;width:1196px;--d:2.4s" alt="expansion, smart cities, and future economic corridors.">
+    <img data-lang="en" class="abs rule"    src="assets/growth/rule-bot.png" style="left:384px;top:362px;width:1206px;--d:2.65s" alt="">
     <!-- yellow tagline bar: comes in last -->
-    <img class="abs tag-bar"  src="assets/growth/bar.png"      style="left:62px;top:943px;width:795px;--d:3.0s" alt="">
-    <img class="abs tag-text" src="assets/growth/bar-text.png" style="left:96px;top:975px;width:727px;--d:3.45s" alt="Powering opportunities for a stronger Thailand">
-    <div class="abs homeBtn" data-home><img src="assets/btn-home.png" alt="Home"></div>
+    <img data-lang="en" class="abs tag-bar"  src="assets/growth/bar.png"      style="left:62px;top:943px;width:795px;--d:3.0s" alt="">
+    <img data-lang="en" class="abs tag-text" src="assets/growth/bar-text.png" style="left:96px;top:975px;width:727px;--d:3.45s" alt="Powering opportunities for a stronger Thailand">
+    <!-- Thai text -->
+    <img data-lang="th" class="abs line-in" src="assets/growth/th/t1.png" style="left:384px;top:96px;width:1042px;--d:1.55s" alt="">
+    <img data-lang="th" class="abs rule" src="assets/growth/th/rule1.png" style="left:384px;top:179px;width:1044px;--d:1.75s" alt="">
+    <img data-lang="th" class="abs line-in" src="assets/growth/th/p1.png" style="left:385px;top:205px;width:1043px;--d:1.95s" alt="">
+    <img data-lang="th" class="abs line-in" src="assets/growth/th/p2.png" style="left:385px;top:244px;width:1043px;--d:2.15s" alt="">
+    <img data-lang="th" class="abs rule" src="assets/growth/th/rule2.png" style="left:384px;top:298px;width:1044px;--d:2.35s" alt="">
+    <img data-lang="th" class="abs tag-bar" src="assets/growth/th/bar.png" style="left:62px;top:943px;width:510px;--d:2.70s" alt="">
+    <img data-lang="th" class="abs tag-text" src="assets/growth/th/bar-text.png" style="left:95px;top:964px;width:432px;--d:3.15s" alt="">
+    <div class="abs homeBtn" data-home style="left:1780px;top:59px"><img src="assets/growth/home.png" alt="Home"></div>
   </section>
 
   <!-- =================== PAGE: EV SOLUTIONS =================== -->
-  <section id="pg-ev" class="screen cpage" data-live="3900">
+  <section id="pg-ev" class="screen cpage" data-live="4050">
     <img class="abs frame" src="assets/ev/frame.jpg" alt="">
     <div class="abs card" style="left:23px;top:1px;width:1871px;height:1052px;clip-path:polygon(383px 31px,367px 33px,350px 39px,337px 47px,330px 53px,42px 341px,30px 355px,26px 361px,23px 367px,21px 369px,12px 389px,6px 411px,6px 417px,5px 419px,5px 1019px,10px 1031px,18px 1039px,24px 1043px,33px 1046px,33px 1047px,1841px 1047px,1841px 1046px,1845px 1045px,1853px 1041px,1862px 1033px,1868px 1021px,1868px 1017px,1869px 1015px,1869px 69px,1867px 59px,1862px 49px,1857px 43px,1845px 35px,1840px 33px,1829px 31px)">
       <div class="kb">
@@ -290,19 +333,28 @@
     </div>
     <img class="abs cat" src="assets/ev/label.png" style="left:35px;top:37px;width:210px" alt="EV Solutions">
     <canvas class="abs cat-sweep" width="420" height="134" style="left:35px;top:37px;width:210px;height:67px"></canvas>
-    <img class="abs line-in" src="assets/ev/title.png"    style="left:389px;top:91px;width:1184px;--d:1.55s" alt="Driving Sustainable Mobility">
-    <img class="abs line-in" src="assets/ev/sub.png"      style="left:387px;top:167px;width:526px;--d:1.8s" alt="EGAT EV Business Solutions">
-    <img class="abs rule"    src="assets/ev/rule-top.png" style="left:384px;top:221px;width:1189px;--d:2.0s" alt="">
-    <img class="abs line-in" src="assets/ev/p1.png"       style="left:385px;top:249px;width:1178px;--d:2.2s" alt="Developing EV charging infrastructure and smart mobility solutions">
-    <img class="abs line-in" src="assets/ev/p2.png"       style="left:385px;top:284px;width:1178px;--d:2.4s" alt="to promote cleaner transportation and reduce greenhouse gas emissions.">
-    <img class="abs rule"    src="assets/ev/rule-bot.png" style="left:384px;top:340px;width:1189px;--d:2.65s" alt="">
-    <img class="abs tag-bar"  src="assets/ev/bar.png"      style="left:1106px;top:942px;width:760px;--d:3.0s" alt="">
-    <img class="abs tag-text" src="assets/ev/bar-text.png" style="left:1139px;top:975px;width:693px;--d:3.45s" alt="Cleaner transportation, brighter communities">
+    <img data-lang="en" class="abs line-in" src="assets/ev/title.png"    style="left:389px;top:91px;width:1184px;--d:1.55s" alt="Driving Sustainable Mobility">
+    <img data-lang="en" class="abs line-in" src="assets/ev/sub.png"      style="left:387px;top:167px;width:526px;--d:1.8s" alt="EGAT EV Business Solutions">
+    <img data-lang="en" class="abs rule"    src="assets/ev/rule-top.png" style="left:384px;top:221px;width:1189px;--d:2.0s" alt="">
+    <img data-lang="en" class="abs line-in" src="assets/ev/p1.png"       style="left:385px;top:249px;width:1178px;--d:2.2s" alt="Developing EV charging infrastructure and smart mobility solutions">
+    <img data-lang="en" class="abs line-in" src="assets/ev/p2.png"       style="left:385px;top:284px;width:1178px;--d:2.4s" alt="to promote cleaner transportation and reduce greenhouse gas emissions.">
+    <img data-lang="en" class="abs rule"    src="assets/ev/rule-bot.png" style="left:384px;top:340px;width:1189px;--d:2.65s" alt="">
+    <img data-lang="en" class="abs tag-bar"  src="assets/ev/bar.png"      style="left:1106px;top:942px;width:760px;--d:3.0s" alt="">
+    <img data-lang="en" class="abs tag-text" src="assets/ev/bar-text.png" style="left:1139px;top:975px;width:693px;--d:3.45s" alt="Cleaner transportation, brighter communities">
+    <!-- Thai text -->
+    <img data-lang="th" class="abs line-in" src="assets/ev/th/t1.png" style="left:384px;top:96px;width:699px;--d:1.55s" alt="">
+    <img data-lang="th" class="abs rule" src="assets/ev/th/rule1.png" style="left:384px;top:178px;width:996px;--d:1.75s" alt="">
+    <img data-lang="th" class="abs line-in" src="assets/ev/th/p1.png" style="left:383px;top:200px;width:998px;--d:1.95s" alt="">
+    <img data-lang="th" class="abs line-in" src="assets/ev/th/p2.png" style="left:383px;top:243px;width:998px;--d:2.15s" alt="">
+    <img data-lang="th" class="abs line-in" src="assets/ev/th/p3.png" style="left:383px;top:277px;width:998px;--d:2.35s" alt="">
+    <img data-lang="th" class="abs rule" src="assets/ev/th/rule2.png" style="left:384px;top:336px;width:996px;--d:2.55s" alt="">
+    <img data-lang="th" class="abs tag-bar" src="assets/ev/th/bar.png" style="left:1401px;top:942px;width:465px;--d:2.90s" alt="">
+    <img data-lang="th" class="abs tag-text" src="assets/ev/th/bar-text.png" style="left:1437px;top:964px;width:387px;--d:3.35s" alt="">
     <div class="abs homeBtn" data-home style="left:1780px;top:58px"><img src="assets/ev/home.png" alt="Home"></div>
   </section>
 
   <!-- =================== PAGE: AI + SOLAR =================== -->
-  <section id="pg-aisolar" class="screen cpage" data-live="4050">
+  <section id="pg-aisolar" class="screen cpage" data-live="4250">
     <img class="abs frame" src="assets/aisolar/frame.jpg" alt="">
     <div class="abs card" style="left:0px;top:0px;width:1904px;height:1053px;clip-path:polygon(407px 32px,391px 34px,378px 38px,370px 42px,356px 52px,62px 346px,47px 366px,38px 384px,38px 386px,35px 392px,31px 406px,31px 410px,29px 418px,29px 426px,28px 428px,28px 1014px,30px 1024px,37px 1036px,44px 1042px,56px 1047px,56px 1048px,1865px 1048px,1865px 1047px,1877px 1042px,1882px 1038px,1887px 1032px,1891px 1024px,1893px 1014px,1893px 72px,1892px 70px,1892px 64px,1890px 60px,1890px 58px,1884px 48px,1873px 38px,1864px 34px,1853px 32px)">
       <div class="kb">
@@ -315,14 +367,24 @@
     </div>
     <img class="abs cat" src="assets/aisolar/label.png" style="left:64px;top:37px;width:135px" alt="AI + Solar">
     <canvas class="abs cat-sweep" width="270" height="236" style="left:64px;top:37px;width:135px;height:118px"></canvas>
-    <img class="abs line-in" src="assets/aisolar/t1.png" style="left:386px;top:91px;width:1361px;--d:1.55s" alt="AI-Powered Solar Rooftop">
-    <img class="abs line-in" src="assets/aisolar/t2.png" style="left:386px;top:161px;width:1361px;--d:1.75s" alt="Detection from Satellite Imagery">
-    <img class="abs rule" src="assets/aisolar/rule-top.png" style="left:384px;top:243px;width:1409px;--d:1.95s" alt="">
-    <img class="abs line-in" src="assets/aisolar/p1.png" style="left:387px;top:271px;width:1403px;--d:2.15s" alt="Using AI and satellite data to identify and analyze solar rooftops across Thailand,">
-    <img class="abs line-in" src="assets/aisolar/p2.png" style="left:387px;top:306px;width:1403px;--d:2.35s" alt="providing valuable insights for energy planning, demand forecasting, and grid management.">
-    <img class="abs rule" src="assets/aisolar/rule-bot.png" style="left:384px;top:362px;width:1409px;--d:2.55s" alt="">
-    <img class="abs tag-bar" src="assets/aisolar/bar.png" style="left:61px;top:942px;width:668px;--d:2.90s" alt="">
-    <img class="abs tag-text" src="assets/aisolar/bar-text.png" style="left:99px;top:975px;width:593px;--d:3.35s" alt="From space data to solar opportunities">
+    <img data-lang="en" class="abs line-in" src="assets/aisolar/t1.png" style="left:386px;top:91px;width:1361px;--d:1.55s" alt="AI-Powered Solar Rooftop">
+    <img data-lang="en" class="abs line-in" src="assets/aisolar/t2.png" style="left:386px;top:161px;width:1361px;--d:1.75s" alt="Detection from Satellite Imagery">
+    <img data-lang="en" class="abs rule" src="assets/aisolar/rule-top.png" style="left:384px;top:243px;width:1409px;--d:1.95s" alt="">
+    <img data-lang="en" class="abs line-in" src="assets/aisolar/p1.png" style="left:387px;top:271px;width:1403px;--d:2.15s" alt="Using AI and satellite data to identify and analyze solar rooftops across Thailand,">
+    <img data-lang="en" class="abs line-in" src="assets/aisolar/p2.png" style="left:387px;top:306px;width:1403px;--d:2.35s" alt="providing valuable insights for energy planning, demand forecasting, and grid management.">
+    <img data-lang="en" class="abs rule" src="assets/aisolar/rule-bot.png" style="left:384px;top:362px;width:1409px;--d:2.55s" alt="">
+    <img data-lang="en" class="abs tag-bar" src="assets/aisolar/bar.png" style="left:61px;top:942px;width:668px;--d:2.90s" alt="">
+    <img data-lang="en" class="abs tag-text" src="assets/aisolar/bar-text.png" style="left:99px;top:975px;width:593px;--d:3.35s" alt="From space data to solar opportunities">
+    <!-- Thai text -->
+    <img data-lang="th" class="abs line-in" src="assets/aisolar/th/t1.png" style="left:385px;top:110px;width:717px;--d:1.55s" alt="">
+    <img data-lang="th" class="abs line-in" src="assets/aisolar/th/t2.png" style="left:385px;top:165px;width:717px;--d:1.75s" alt="">
+    <img data-lang="th" class="abs rule" src="assets/aisolar/th/rule1.png" style="left:384px;top:228px;width:980px;--d:1.95s" alt="">
+    <img data-lang="th" class="abs line-in" src="assets/aisolar/th/p1.png" style="left:383px;top:250px;width:982px;--d:2.15s" alt="">
+    <img data-lang="th" class="abs line-in" src="assets/aisolar/th/p2.png" style="left:383px;top:294px;width:982px;--d:2.35s" alt="">
+    <img data-lang="th" class="abs line-in" src="assets/aisolar/th/p3.png" style="left:383px;top:333px;width:982px;--d:2.55s" alt="">
+    <img data-lang="th" class="abs rule" src="assets/aisolar/th/rule2.png" style="left:384px;top:381px;width:980px;--d:2.75s" alt="">
+    <img data-lang="th" class="abs tag-bar" src="assets/aisolar/th/bar.png" style="left:61px;top:942px;width:598px;--d:3.10s" alt="">
+    <img data-lang="th" class="abs tag-text" src="assets/aisolar/th/bar-text.png" style="left:98px;top:970px;width:525px;--d:3.55s" alt="">
     <div class="abs homeBtn" data-home style="left:1780px;top:58px"><img src="assets/aisolar/home.png" alt="Home"></div>
   </section>
 
@@ -339,15 +401,23 @@
     </div>
     <img class="abs cat" src="assets/biomass/label.png" style="left:32px;top:37px;width:203px" alt="Biomass + Satellite">
     <canvas class="abs cat-sweep" width="406" height="238" style="left:32px;top:37px;width:203px;height:119px"></canvas>
-    <img class="abs line-in" src="assets/biomass/t1.png" style="left:386px;top:96px;width:971px;--d:1.55s" alt="Carbon Neutrality">
-    <img class="abs line-in" src="assets/biomass/t2.png" style="left:386px;top:165px;width:971px;--d:1.75s" alt="with Space Technology">
-    <img class="abs rule" src="assets/biomass/rule-top.png" style="left:384px;top:247px;width:1162px;--d:1.95s" alt="">
-    <img class="abs line-in" src="assets/biomass/p1.png" style="left:385px;top:270px;width:1163px;--d:2.15s" alt="Estimating above-ground biomass for energy crops in Lampang Province">
-    <img class="abs line-in" src="assets/biomass/p2.png" style="left:385px;top:305px;width:1163px;--d:2.35s" alt="using Landsat 8 satellite data, supporting carbon reduction">
-    <img class="abs line-in" src="assets/biomass/p3.png" style="left:385px;top:340px;width:1163px;--d:2.55s" alt="and sustainable biomass utilization.">
-    <img class="abs rule" src="assets/biomass/rule-bot.png" style="left:384px;top:397px;width:1162px;--d:2.75s" alt="">
-    <img class="abs tag-bar" src="assets/biomass/bar.png" style="left:996px;top:943px;width:870px;--d:3.10s" alt="">
-    <img class="abs tag-text" src="assets/biomass/bar-text.png" style="left:1033px;top:977px;width:796px;--d:3.55s" alt="Turning natural resources into a cleaner tomorrow">
+    <img data-lang="en" class="abs line-in" src="assets/biomass/t1.png" style="left:386px;top:96px;width:971px;--d:1.55s" alt="Carbon Neutrality">
+    <img data-lang="en" class="abs line-in" src="assets/biomass/t2.png" style="left:386px;top:165px;width:971px;--d:1.75s" alt="with Space Technology">
+    <img data-lang="en" class="abs rule" src="assets/biomass/rule-top.png" style="left:384px;top:247px;width:1162px;--d:1.95s" alt="">
+    <img data-lang="en" class="abs line-in" src="assets/biomass/p1.png" style="left:385px;top:270px;width:1163px;--d:2.15s" alt="Estimating above-ground biomass for energy crops in Lampang Province">
+    <img data-lang="en" class="abs line-in" src="assets/biomass/p2.png" style="left:385px;top:305px;width:1163px;--d:2.35s" alt="using Landsat 8 satellite data, supporting carbon reduction">
+    <img data-lang="en" class="abs line-in" src="assets/biomass/p3.png" style="left:385px;top:340px;width:1163px;--d:2.55s" alt="and sustainable biomass utilization.">
+    <img data-lang="en" class="abs rule" src="assets/biomass/rule-bot.png" style="left:384px;top:397px;width:1162px;--d:2.75s" alt="">
+    <img data-lang="en" class="abs tag-bar" src="assets/biomass/bar.png" style="left:996px;top:943px;width:870px;--d:3.10s" alt="">
+    <img data-lang="en" class="abs tag-text" src="assets/biomass/bar-text.png" style="left:1033px;top:977px;width:796px;--d:3.55s" alt="Turning natural resources into a cleaner tomorrow">
+    <!-- Thai text -->
+    <img data-lang="th" class="abs line-in" src="assets/biomass/th/t1.png" style="left:386px;top:105px;width:1053px;--d:1.55s" alt="">
+    <img data-lang="th" class="abs rule" src="assets/biomass/th/rule1.png" style="left:384px;top:179px;width:1044px;--d:1.75s" alt="">
+    <img data-lang="th" class="abs line-in" src="assets/biomass/th/p1.png" style="left:385px;top:200px;width:1032px;--d:1.95s" alt="">
+    <img data-lang="th" class="abs line-in" src="assets/biomass/th/p2.png" style="left:385px;top:239px;width:1032px;--d:2.15s" alt="">
+    <img data-lang="th" class="abs rule" src="assets/biomass/th/rule2.png" style="left:384px;top:298px;width:1044px;--d:2.35s" alt="">
+    <img data-lang="th" class="abs tag-bar" src="assets/biomass/th/bar.png" style="left:1224px;top:943px;width:642px;--d:2.70s" alt="">
+    <img data-lang="th" class="abs tag-text" src="assets/biomass/th/bar-text.png" style="left:1257px;top:965px;width:568px;--d:3.15s" alt="">
     <div class="abs homeBtn" data-home style="left:1780px;top:59px"><img src="assets/biomass/home.png" alt="Home"></div>
   </section>
 
@@ -366,16 +436,25 @@
     </div>
     <img class="abs cat" src="assets/insar/label.png" style="left:34px;top:38px;width:219px" alt="InSAR + Infrastructure">
     <canvas class="abs cat-sweep" width="438" height="208" style="left:34px;top:38px;width:219px;height:104px"></canvas>
-    <img class="abs line-in" src="assets/insar/t1.png" style="left:389px;top:96px;width:1192px;--d:1.55s" alt="Early Warning System for">
-    <img class="abs line-in" src="assets/insar/t2.png" style="left:389px;top:165px;width:1192px;--d:1.75s" alt="Infrastructure Displacement">
-    <img class="abs line-in" src="assets/insar/t3.png" style="left:389px;top:234px;width:1192px;--d:1.95s" alt="using InSAR Technology">
-    <img class="abs rule" src="assets/insar/rule-top.png" style="left:384px;top:316px;width:1265px;--d:2.15s" alt="">
-    <img class="abs line-in" src="assets/insar/p1.png" style="left:386px;top:343px;width:1265px;--d:2.35s" alt="Monitoring ground deformation and infrastructure stability with satellite-based">
-    <img class="abs line-in" src="assets/insar/p2.png" style="left:386px;top:378px;width:1265px;--d:2.55s" alt="InSAR technology, enabling early risk detection and enhancing operational safety">
-    <img class="abs line-in" src="assets/insar/p3.png" style="left:386px;top:413px;width:1265px;--d:2.75s" alt="and long-term reliability.">
-    <img class="abs rule" src="assets/insar/rule-bot.png" style="left:384px;top:467px;width:1265px;--d:2.95s" alt="">
-    <img class="abs tag-bar" src="assets/insar/bar.png" style="left:1077px;top:943px;width:789px;--d:3.30s" alt="">
-    <img class="abs tag-text" src="assets/insar/bar-text.png" style="left:1109px;top:976px;width:725px;--d:3.75s" alt="Safer infrastructure. Stronger energy security.">
+    <img data-lang="en" class="abs line-in" src="assets/insar/t1.png" style="left:389px;top:96px;width:1192px;--d:1.55s" alt="Early Warning System for">
+    <img data-lang="en" class="abs line-in" src="assets/insar/t2.png" style="left:389px;top:165px;width:1192px;--d:1.75s" alt="Infrastructure Displacement">
+    <img data-lang="en" class="abs line-in" src="assets/insar/t3.png" style="left:389px;top:234px;width:1192px;--d:1.95s" alt="using InSAR Technology">
+    <img data-lang="en" class="abs rule" src="assets/insar/rule-top.png" style="left:384px;top:316px;width:1265px;--d:2.15s" alt="">
+    <img data-lang="en" class="abs line-in" src="assets/insar/p1.png" style="left:386px;top:343px;width:1265px;--d:2.35s" alt="Monitoring ground deformation and infrastructure stability with satellite-based">
+    <img data-lang="en" class="abs line-in" src="assets/insar/p2.png" style="left:386px;top:378px;width:1265px;--d:2.55s" alt="InSAR technology, enabling early risk detection and enhancing operational safety">
+    <img data-lang="en" class="abs line-in" src="assets/insar/p3.png" style="left:386px;top:413px;width:1265px;--d:2.75s" alt="and long-term reliability.">
+    <img data-lang="en" class="abs rule" src="assets/insar/rule-bot.png" style="left:384px;top:467px;width:1265px;--d:2.95s" alt="">
+    <img data-lang="en" class="abs tag-bar" src="assets/insar/bar.png" style="left:1077px;top:943px;width:789px;--d:3.30s" alt="">
+    <img data-lang="en" class="abs tag-text" src="assets/insar/bar-text.png" style="left:1109px;top:976px;width:725px;--d:3.75s" alt="Safer infrastructure. Stronger energy security.">
+    <!-- Thai text -->
+    <img data-lang="th" class="abs line-in" src="assets/insar/th/t1.png" style="left:385px;top:96px;width:937px;--d:1.55s" alt="">
+    <img data-lang="th" class="abs line-in" src="assets/insar/th/t2.png" style="left:385px;top:166px;width:937px;--d:1.75s" alt="">
+    <img data-lang="th" class="abs rule" src="assets/insar/th/rule1.png" style="left:384px;top:259px;width:1166px;--d:1.95s" alt="">
+    <img data-lang="th" class="abs line-in" src="assets/insar/th/p1.png" style="left:385px;top:280px;width:1164px;--d:2.15s" alt="">
+    <img data-lang="th" class="abs line-in" src="assets/insar/th/p2.png" style="left:385px;top:319px;width:1164px;--d:2.35s" alt="">
+    <img data-lang="th" class="abs rule" src="assets/insar/th/rule2.png" style="left:384px;top:378px;width:1166px;--d:2.55s" alt="">
+    <img data-lang="th" class="abs tag-bar" src="assets/insar/th/bar.png" style="left:1076px;top:943px;width:790px;--d:2.90s" alt="">
+    <img data-lang="th" class="abs tag-text" src="assets/insar/th/bar-text.png" style="left:1102px;top:964px;width:737px;--d:3.35s" alt="">
     <div class="abs homeBtn" data-home style="left:1780px;top:59px"><img src="assets/insar/home.png" alt="Home"></div>
   </section>
 
@@ -395,15 +474,24 @@
     </div>
     <img class="abs cat" src="assets/smart/label.png" style="left:72px;top:38px;width:162px" alt="Smart Energy">
     <canvas class="abs cat-sweep" width="324" height="146" style="left:72px;top:38px;width:162px;height:73px"></canvas>
-    <img class="abs line-in" src="assets/smart/t1.png" style="left:390px;top:92px;width:917px;--d:1.55s" alt="Integrated Solutions">
-    <img class="abs line-in" src="assets/smart/t2.png" style="left:390px;top:161px;width:917px;--d:1.75s" alt="for Decarbonization">
-    <img class="abs line-in" src="assets/smart/sub.png" style="left:387px;top:235px;width:572px;--d:1.95s" alt="EGAT Smart Energy Solutions">
-    <img class="abs rule" src="assets/smart/rule-top.png" style="left:386px;top:286px;width:1375px;--d:2.15s" alt="">
-    <img class="abs line-in" src="assets/smart/p1.png" style="left:387px;top:310px;width:1374px;--d:2.35s" alt="Developing integrated energy solutions to reduce carbon emissions, with smart energy">
-    <img class="abs line-in" src="assets/smart/p2.png" style="left:387px;top:345px;width:1374px;--d:2.55s" alt="management, renewable integration, and innovative services for a cleaner future.">
-    <img class="abs rule" src="assets/smart/rule-bot.png" style="left:386px;top:398px;width:1375px;--d:2.75s" alt="">
-    <img class="abs tag-bar" src="assets/smart/bar.png" style="left:61px;top:942px;width:688px;--d:3.10s" alt="">
-    <img class="abs tag-text" src="assets/smart/bar-text.png" style="left:99px;top:975px;width:613px;--d:3.55s" alt="Clean energy for a low-carbon Thailand">
+    <img data-lang="en" class="abs line-in" src="assets/smart/t1.png" style="left:390px;top:92px;width:917px;--d:1.55s" alt="Integrated Solutions">
+    <img data-lang="en" class="abs line-in" src="assets/smart/t2.png" style="left:390px;top:161px;width:917px;--d:1.75s" alt="for Decarbonization">
+    <img data-lang="en" class="abs line-in" src="assets/smart/sub.png" style="left:387px;top:235px;width:572px;--d:1.95s" alt="EGAT Smart Energy Solutions">
+    <img data-lang="en" class="abs rule" src="assets/smart/rule-top.png" style="left:386px;top:286px;width:1375px;--d:2.15s" alt="">
+    <img data-lang="en" class="abs line-in" src="assets/smart/p1.png" style="left:387px;top:310px;width:1374px;--d:2.35s" alt="Developing integrated energy solutions to reduce carbon emissions, with smart energy">
+    <img data-lang="en" class="abs line-in" src="assets/smart/p2.png" style="left:387px;top:345px;width:1374px;--d:2.55s" alt="management, renewable integration, and innovative services for a cleaner future.">
+    <img data-lang="en" class="abs rule" src="assets/smart/rule-bot.png" style="left:386px;top:398px;width:1375px;--d:2.75s" alt="">
+    <img data-lang="en" class="abs tag-bar" src="assets/smart/bar.png" style="left:61px;top:942px;width:688px;--d:3.10s" alt="">
+    <img data-lang="en" class="abs tag-text" src="assets/smart/bar-text.png" style="left:99px;top:975px;width:613px;--d:3.55s" alt="Clean energy for a low-carbon Thailand">
+    <!-- Thai text -->
+    <img data-lang="th" class="abs line-in" src="assets/smart/th/t1.png" style="left:384px;top:96px;width:886px;--d:1.55s" alt="">
+    <img data-lang="th" class="abs rule" src="assets/smart/th/rule1.png" style="left:384px;top:179px;width:1243px;--d:1.75s" alt="">
+    <img data-lang="th" class="abs line-in" src="assets/smart/th/p1.png" style="left:384px;top:206px;width:1243px;--d:1.95s" alt="">
+    <img data-lang="th" class="abs line-in" src="assets/smart/th/p2.png" style="left:384px;top:239px;width:1243px;--d:2.15s" alt="">
+    <img data-lang="th" class="abs line-in" src="assets/smart/th/p3.png" style="left:384px;top:278px;width:1243px;--d:2.35s" alt="">
+    <img data-lang="th" class="abs rule" src="assets/smart/th/rule2.png" style="left:384px;top:333px;width:1243px;--d:2.55s" alt="">
+    <img data-lang="th" class="abs tag-bar" src="assets/smart/th/bar.png" style="left:61px;top:943px;width:519px;--d:2.90s" alt="">
+    <img data-lang="th" class="abs tag-text" src="assets/smart/th/bar-text.png" style="left:98px;top:964px;width:449px;--d:3.35s" alt="">
     <div class="abs homeBtn" data-home style="left:1780px;top:59px"><img src="assets/smart/home.png" alt="Home"></div>
   </section>
 
@@ -538,6 +626,16 @@ const MENU = [
   { id:'insar',   title:'InSAR + Infrastructure',   lbl:'lbl2', c:[1202,695],l:[1227,779,219,100]},
   { id:'ev',      title:'EV Solutions',             lbl:'lbl6', c:[1369,423],l:[1402,525,202,64] },
 ];
+/* Thai home layout (TH_01_cover.psd): circles are a little smaller and sit lower */
+const MENU_TH = {
+  who: { c:[303,473], size:257, l:[389,552,85,99], lbl:'lbl3' },
+  aisolar: { c:[463,734], size:258, l:[535,813,114,99], lbl:'lbl0' },
+  growth: { c:[653,473], size:257, l:[679,552,208,99], lbl:'lbl4' },
+  biomass: { c:[828,734], size:257, l:[867,812,178,100], lbl:'lbl1' },
+  smart: { c:[1003,473], size:257, l:[1064,571,137,61], lbl:'lbl5' },
+  insar: { c:[1192,734], size:258, l:[1216,815,210,96], lbl:'lbl2' },
+  ev: { c:[1352,473], size:258, l:[1384,571,194,61], lbl:'lbl6' },
+};
 
 /* ---------- stage scaling ---------- */
 const stage = document.getElementById('stage');
@@ -550,18 +648,24 @@ addEventListener('resize', fit); fit();
 /* ---------- build menu ---------- */
 const menu = document.getElementById('menu');
 const cycle = MENU.length*CONFIG.glowStep + CONFIG.glowPause;
-MENU.forEach((m,i)=>{
-  const b = document.createElement('div');
-  b.className = 'abs btn';
-  b.dataset.go = m.id;
-  b.style.cssText = `left:${m.c[0]}px;top:${m.c[1]}px;--d:${2.0+i*.09}s;--gd:${i*CONFIG.glowStep}s;--cycle:${cycle}s`;
-  b.innerHTML = `<div class="face">
-      <img class="circle" src="assets/circle.png" alt="">
-      <img class="lbl" src="assets/${m.lbl}.png" alt="${m.title}"
-           style="left:${m.l[0]-m.c[0]}px;top:${m.l[1]-m.c[1]}px;width:${m.l[2]}px;height:${m.l[3]}px">
-    </div><div class="halo"></div>`;
-  menu.appendChild(b);
-});
+function buildMenu(lang){
+  MENU.forEach((m,i)=>{
+    const t = lang==='th' ? MENU_TH[m.id] : null;
+    const c = t ? t.c : m.c, l = t ? t.l : m.l, size = t ? t.size : 268;
+    const dir = t ? 'assets/th/' : 'assets/', lbl = t ? t.lbl : m.lbl;
+    const b = document.createElement('div');
+    b.className = 'abs btn';
+    b.dataset.go = m.id; b.dataset.lang = lang;
+    b.style.cssText = `left:${c[0]}px;top:${c[1]}px;width:${size}px;height:${size}px;--d:${2.0+i*.09}s;--gd:${i*CONFIG.glowStep}s;--cycle:${cycle}s`;
+    b.innerHTML = `<div class="face">
+        <img class="circle" src="${dir}circle.png" alt="" style="width:${size}px;height:${size}px">
+        <img class="lbl" src="${dir}${lbl}.png" alt="${m.title}"
+             style="left:${l[0]-c[0]}px;top:${l[1]-c[1]}px;width:${l[2]}px;height:${l[3]}px">
+      </div><div class="halo"></div>`;
+    menu.appendChild(b);
+  });
+}
+buildMenu('en'); buildMenu('th');
 
 /* ---------- satellite timing: start at its design position (x=1512) ---------- */
 const satTrack = document.querySelector('.sat-track');
@@ -1018,7 +1122,7 @@ const fader = document.getElementById('fader');
 let glowTimer, busy = false;
 
 function playHome(){
-  home.classList.remove('play','glowing');
+  home.classList.remove('play','glowing','quick');
   void home.offsetWidth;                 // restart CSS animations
   home.classList.add('play');
   if (typeof Sound !== 'undefined'){ Sound.scene('home'); Sound.intro(); }
@@ -1053,19 +1157,40 @@ function show(id){
   }, 350);
 }
 
+/* ---------- language ----------
+   Starts in English on every launch. Language can only be changed on the Home page;
+   content pages and the idle return keep whichever language was chosen last. */
+let LANG = 'en';
+function setLang(lang, fromTap){
+  if (lang !== 'en' && lang !== 'th') return;
+  const changed = lang !== LANG;
+  LANG = lang;
+  document.documentElement.dataset.uiLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b=> b.classList.toggle('is-current', b.dataset.setlang === lang));
+  if (changed && fromTap){
+    home.classList.add('quick');            // the newly shown text/buttons animate in quickly
+  }
+}
+setLang('en');
+
 /* ---------- touch handling (press feedback + tap) ---------- */
 let pressed = null;
 stage.addEventListener('pointerdown', e=>{
-  const t = e.target.closest('[data-go],[data-home]');
+  const t = e.target.closest('[data-go],[data-home],[data-setlang]');
   if (!t) return;
   if (t.dataset.go){                       // round hit area for circle buttons
     const r = t.getBoundingClientRect();
     const dx = e.clientX-(r.left+r.width/2), dy = e.clientY-(r.top+r.height/2);
     if (Math.hypot(dx,dy) > r.width/2) return;
   }
+  if (t.dataset.setlang){                  // only the pill itself, not its soft glow
+    const r = t.getBoundingClientRect(), k = r.width/227;
+    const lx = (e.clientX-r.left)/k, ly = (e.clientY-r.top)/k;
+    if (lx < 40 || lx > 180 || ly < 15 || ly > 82) return;
+  }
   pressed = t; t.classList.add('pressed');
   Sound.unlock && Sound.unlock();
-  Sound.click(t.dataset.home !== undefined);
+  Sound.ui && Sound.ui(t.dataset.setlang ? 'lang' : t.dataset.home !== undefined ? 'home' : 'menu');
 });
 const release = e=>{
   if (!pressed) return;
@@ -1074,7 +1199,8 @@ const release = e=>{
   if (e.type!=='pointerup') return;
   const over = document.elementFromPoint(e.clientX,e.clientY);
   if (!over || !t.contains(over)) return;
-  if (t.dataset.home!==undefined) show('home'); else show(t.dataset.go);
+  if (t.dataset.setlang) setLang(t.dataset.setlang, true);
+  else if (t.dataset.home!==undefined) show('home'); else show(t.dataset.go);
 };
 addEventListener('pointerup', release);
 addEventListener('pointercancel', release);
@@ -1237,10 +1363,48 @@ const Sound = (()=>{
   }
   return {
     scene,
-    click(isHome){ ctx.resume().then(()=>{           // menu tap / home tap
-      if (isHome){ tone(1400, .12, {to:700, vol:.16, send:.3}); tone(2100, .08, {vol:.05}); }
-      else { tone(900, .1, {to:1900, vol:.16, send:.35}); tone(2600, .07, {vol:.06, attack:.002}); }
+    // ----- Hi-tech UI sound kit: one sound per kind of button -----
+    ui(kind){ ctx.resume().then(()=>{
+      const later = (ms, fn)=> setTimeout(fn, ms);
+      switch(kind){
+        case 'menu':      // open a topic: data chirp + rising 3-note confirm
+          burst(.05, {freq:6000, type:'highpass', vol:.08});
+          tone(700, .09, {to:1600, type:'square', vol:.05});
+          [1318.5, 1760, 2637].forEach((f,i)=> later(45+i*55, ()=> tone(f, .16, {vol:.09, attack:.003, send:.35})));
+          break;
+        case 'home':      // back home: falling two-step blip
+          tone(1600, .08, {type:'square', vol:.045});
+          later(70, ()=> tone(1175, .18, {to:880, vol:.11, send:.3}));
+          burst(.06, {freq:3500, q:3, vol:.05});
+          break;
+        case 'lang':      // switch language: toggle click + pitch swap
+          burst(.025, {freq:7000, type:'highpass', vol:.1});
+          tone(1046.5, .07, {type:'triangle', vol:.1});
+          later(65, ()=> tone(1568, .14, {type:'triangle', vol:.1, send:.3}));
+          break;
+        case 'tick':      // − / + steps and sliders: tiny precise tick
+          tone(2400, .03, {type:'square', vol:.035, attack:.001});
+          burst(.02, {freq:8000, type:'highpass', vol:.04});
+          break;
+        case 'confirm':   // save / OK: bright double chime
+          tone(1760, .12, {vol:.09, send:.3});
+          later(90, ()=> tone(2349, .22, {vol:.09, send:.45}));
+          break;
+        case 'cancel':    // cancel / close: soft low double tap
+          tone(520, .07, {type:'triangle', vol:.1});
+          later(80, ()=> tone(390, .1, {type:'triangle', vol:.08}));
+          break;
+        case 'panel':     // staff panel opens: scanning sweep
+          burst(.35, {freq:800, sweepTo:6000, q:4, vol:.08});
+          tone(440, .3, {to:880, type:'sine', vol:.06, send:.4});
+          break;
+        case 'power':     // quit: power-down
+          tone(880, .6, {to:110, type:'sawtooth', vol:.05});
+          burst(.5, {freq:3000, sweepTo:200, q:2, vol:.08});
+          break;
+      }
     }); },
+    click(isHome){ this.ui(isHome ? 'home' : 'menu'); },
     whoosh(){                                      // page transition
       burst(.75, {freq:350, sweepTo:3800, q:1.4, vol:.22});
       tone(220, .7, {to:70, vol:.12, type:'sine'});
@@ -1306,13 +1470,13 @@ SLIDERS.forEach(([k,bus])=>{
     document.getElementById('v-'+k).textContent = el.value;
     Sound.setVolumes && Sound.setVolumes({[bus]: CONFIG[k]});
   });
-  el.addEventListener('change', ()=>{ saveSettings(); if (k==='sfxVolume') Sound.test && Sound.test('sfx'); });
+  el.addEventListener('change', ()=>{ saveSettings(); Sound.ui && Sound.ui('tick'); });
 });
 document.querySelectorAll('[data-step]').forEach(b=> b.addEventListener('click', ()=>{
   const k = b.dataset.step, d = +b.dataset.d;
   const min = Math.max(1, Math.min(30, Math.round(CONFIG[k]/60) + d));
   CONFIG[k] = min*60; saveSettings(); renderSettings();
-  Sound.test && Sound.test('sfx');
+  Sound.ui && Sound.ui('tick');
 }));
 document.querySelectorAll('[data-vol]').forEach(b=> b.addEventListener('click', ()=>{
   const k = b.dataset.vol, el = document.getElementById('s-'+k);
@@ -1320,16 +1484,19 @@ document.querySelectorAll('[data-vol]').forEach(b=> b.addEventListener('click', 
   el.dispatchEvent(new Event('input')); el.dispatchEvent(new Event('change'));
 }));
 document.getElementById('testAmb').addEventListener('click', ()=> Sound.test && Sound.test('ambience'));
-document.getElementById('settingsClose').addEventListener('click', ()=>{ settingsEl.hidden = true; adminOpen = false; lastTouch = Date.now(); });
-document.getElementById('quitCancel').addEventListener('click', ()=>{ quitEl.hidden = true; adminOpen = false; lastTouch = Date.now(); });
+document.getElementById('settingsClose').addEventListener('click', ()=>{ Sound.ui && Sound.ui('confirm'); settingsEl.hidden = true; adminOpen = false; lastTouch = Date.now(); });
+document.getElementById('quitCancel').addEventListener('click', ()=>{ Sound.ui && Sound.ui('cancel'); quitEl.hidden = true; adminOpen = false; lastTouch = Date.now(); });
 document.getElementById('quitOk').addEventListener('click', ()=>{
+  Sound.ui && Sound.ui('power');
+  setTimeout(()=>{
   Sound.suspend && Sound.suspend();
   if (window.kioskApp) { window.kioskApp.quit(); return; }   // desktop app (.exe)
   window.close();
   setTimeout(()=>{ document.getElementById('quitHelp').hidden = false; }, 400);   // the browser refused to close this window
+}, 650);   // let the power-down sound play first
 });
-function openSettings(){ renderSettings(); quitEl.hidden = true; settingsEl.hidden = false; adminOpen = true; }
-function openQuit(){ settingsEl.hidden = true; document.getElementById('quitHelp').hidden = true; quitEl.hidden = false; adminOpen = true; }
+function openSettings(){ Sound.ui && Sound.ui('panel'); renderSettings(); quitEl.hidden = true; settingsEl.hidden = false; adminOpen = true; }
+function openQuit(){ Sound.ui && Sound.ui('panel'); settingsEl.hidden = true; document.getElementById('quitHelp').hidden = true; quitEl.hidden = false; adminOpen = true; }
 
 const cornerTaps = { tl:[], tr:[] };
 stage.addEventListener('pointerdown', e=>{
