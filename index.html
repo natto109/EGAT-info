@@ -153,20 +153,20 @@
     font-family:"Sarabun","Segoe UI","Leelawadee UI",Tahoma,sans-serif;color:var(--a-text);
   }
   .admin[hidden]{display:none}
-  .admin-panel{width:980px;background:var(--a-bg);border:1px solid var(--a-line);border-radius:20px;padding:44px 52px 40px;display:flex;flex-direction:column;gap:14px}
+  .admin-panel{width:980px;background:var(--a-bg);border:1px solid var(--a-line);border-radius:20px;padding:30px 52px 30px;display:flex;flex-direction:column;gap:6px}
   .admin-panel.small{width:760px}
-  .admin-head{display:flex;gap:22px;align-items:center;margin-bottom:8px}
+  .admin-head{display:flex;gap:22px;align-items:center;margin-bottom:0}
   .admin .mono{width:64px;height:64px;border-radius:14px;border:2px solid var(--a-gold);color:var(--a-gold);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:24px;letter-spacing:1px}
   .admin h2{font-size:40px;font-weight:700;line-height:1.1}
-  .admin h3{font-size:22px;color:var(--a-gold);font-weight:600;letter-spacing:.5px;margin-top:14px;padding-bottom:6px;border-bottom:1px solid var(--a-line)}
+  .admin h3{font-size:22px;color:var(--a-gold);font-weight:600;letter-spacing:.5px;margin-top:10px;padding-bottom:6px;border-bottom:1px solid var(--a-line)}
   .admin p{font-size:20px;color:var(--a-muted)}
-  .admin .row{display:grid;grid-template-columns:330px 64px 1fr 64px 80px;gap:16px;align-items:center;min-height:72px}
+  .admin .row{display:grid;grid-template-columns:330px 64px 1fr 64px 80px;gap:16px;align-items:center;min-height:62px}
   .admin .row label{font-size:24px}
   .admin .row .num{grid-column:3;font-size:24px;text-align:center}
   .admin .row .num b{font-size:34px;color:var(--a-gold);font-variant-numeric:tabular-nums;margin-right:6px}
   .admin output{font-size:28px;font-weight:700;color:var(--a-gold);text-align:right;font-variant-numeric:tabular-nums}
   .admin button{font:inherit;cursor:pointer;border-radius:12px;border:1px solid var(--a-line);background:var(--a-surface);color:var(--a-text)}
-  .admin .step{width:64px;height:64px;font-size:34px;line-height:1}
+  .admin .step{width:58px;height:58px;font-size:32px;line-height:1}
   .admin .step:active,.admin .ghost:active{background:var(--a-line)}
   .admin input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:64px;background:transparent;touch-action:none}
   .admin input[type=range]::-webkit-slider-runnable-track{height:10px;border-radius:5px;background:var(--a-line)}
@@ -174,7 +174,15 @@
   .admin .status{font-size:20px;padding:12px 18px;border-radius:10px;background:var(--a-surface);border-left:4px solid var(--a-muted)}
   .admin .status[data-ok="1"]{border-left-color:var(--a-olive-hi);color:var(--a-text)}
   .admin .status[data-ok="0"]{border-left-color:var(--a-gold)}
-  .admin-foot{display:flex;justify-content:flex-end;gap:16px;margin-top:22px}
+  .admin-foot{display:flex;justify-content:flex-end;gap:16px;margin-top:14px}
+  .admin .switch{grid-column:2 / 4;justify-self:start;display:flex;align-items:center;gap:16px;height:58px;padding:0 22px 0 10px;font-size:24px}
+  .admin .switch i{position:relative;width:76px;height:42px;border-radius:21px;background:var(--a-line);transition:background .2s}
+  .admin .switch i::after{content:"";position:absolute;left:4px;top:4px;width:34px;height:34px;border-radius:50%;background:var(--a-muted);transition:transform .2s, background .2s}
+  .admin .switch[aria-checked="true"] i{background:var(--a-olive)}
+  .admin .switch[aria-checked="true"] i::after{transform:translateX(34px);background:var(--a-gold)}
+  /* hide the mouse pointer everywhere, except on the staff panels so a mouse can still be used there */
+  html.hide-cursor, html.hide-cursor *{cursor:none !important}
+  html.hide-cursor .admin, html.hide-cursor .admin *{cursor:default !important}
   .admin .ghost,.admin .primary{height:72px;padding:0 36px;font-size:24px;font-weight:600}
   .admin .primary{background:var(--a-olive);border-color:var(--a-olive);color:#fff}
   .admin .primary:active{background:var(--a-olive-hi)}
@@ -526,12 +534,16 @@
       <div class="row"><label for="s-sfxVolume">เสียงกดปุ่ม / เปลี่ยนหน้า</label>
         <button class="step" data-vol="sfxVolume" data-d="-5">−</button><input type="range" id="s-sfxVolume" min="0" max="100" step="1"><button class="step" data-vol="sfxVolume" data-d="5">+</button><output id="v-sfxVolume"></output></div>
       <p id="musicStatus" class="status"></p>
+      <h3>หน้าจอ</h3>
+      <div class="row"><label>เมาส์ pointer</label>
+        <button id="hideCursor" class="switch" role="switch" aria-checked="true"><i></i><span>ซ่อน</span></button></div>
       <h3>เวลารอ (ไม่มีคนแตะ)</h3>
       <div class="row"><label>กลับหน้า Home หลัง</label>
         <button class="step" data-step="idleSeconds" data-d="-1">−</button><span class="num"><b id="v-idleSeconds"></b> นาที</span><button class="step" data-step="idleSeconds" data-d="1">+</button></div>
       <div class="row"><label>เล่น intro หน้า Home ใหม่ทุก</label>
         <button class="step" data-step="homeReplaySeconds" data-d="-1">−</button><span class="num"><b id="v-homeReplaySeconds"></b> นาที</span><button class="step" data-step="homeReplaySeconds" data-d="1">+</button></div>
       <div class="admin-foot">
+        <button id="resetDefaults" class="ghost">คืนค่าเริ่มต้น</button>
         <button id="testAmb" class="ghost">ทดสอบเสียง</button>
         <button id="settingsClose" class="primary">บันทึกและปิด</button>
       </div>
@@ -565,10 +577,11 @@ const CONFIG = {
   thrusterColor: [110,180,255],  // สีไอพ่น (R,G,B) เช่น ส้ม = [255,140,40]
   thrusterLength: 120,    // ความยาวไอพ่น (px)
   sound: true,            // เปิด/ปิดเสียงทั้งหมด
-  masterVolume: .8,       // ความดังรวม (0–1)
-  ambienceVolume: .5,     // ความดังเสียงบรรยากาศ (0–1)
-  sfxVolume: .8,          // ความดังเสียงกดปุ่ม/เปลี่ยนหน้า (0–1)
+  masterVolume: 1,       // ความดังรวม (0–1)
+  ambienceVolume: .25,     // ความดังเสียงบรรยากาศ (0–1)
+  sfxVolume: 1,          // ความดังเสียงกดปุ่ม/เปลี่ยนหน้า (0–1)
   musicVolume: .6,        // ความดังเพลง music.mp3 (0–1) — ถ้าไม่มีไฟล์ จะเล่นเฉพาะเสียงบรรยากาศ
+  hideCursor: false,       // ซ่อนเมาส์ pointer (true = ซ่อน, false = แสดง)
   // ค่าความดังและเวลา idle ปรับได้จากหน้า Setting (แตะมุมซ้ายบน 5 ครั้ง) และจำค่าไว้ในเครื่อง
   idleSeconds: 300,      // ค้างอยู่หน้าเนื้อหาโดยไม่มีคนแตะเกินกี่วินาที → กลับหน้า Home (300 = 5 นาที)
   homeReplaySeconds: 300, // อยู่หน้า Home โดยไม่มีคนแตะเกินกี่วินาที → เล่น animation หน้า Home ใหม่
@@ -1435,15 +1448,20 @@ document.addEventListener('visibilitychange', ()=>{ if (!Sound.suspend) return; 
    - tap top-right corner 5 times → Quit
    ========================================================= */
 const SETTINGS_KEY = 'egat-kiosk-settings';
+const DEFAULTS = { ...CONFIG };            // values written in CONFIG above, used by the reset button
 function loadSettings(){
   try{
     const s = JSON.parse(localStorage.getItem(SETTINGS_KEY) || 'null');
-    if (s){ ['masterVolume','musicVolume','ambienceVolume','sfxVolume','idleSeconds','homeReplaySeconds'].forEach(k=>{ if (typeof s[k]==='number') CONFIG[k]=s[k]; }); }
+    if (s){ ['masterVolume','musicVolume','ambienceVolume','sfxVolume','idleSeconds','homeReplaySeconds'].forEach(k=>{ if (typeof s[k]==='number') CONFIG[k]=s[k]; }); if (typeof s.hideCursor==='boolean') CONFIG.hideCursor=s.hideCursor; }
   }catch(e){}
+  applySettings();
+}
+function applySettings(){
   Sound.setVolumes && Sound.setVolumes({ master:CONFIG.masterVolume, music:CONFIG.musicVolume, ambience:CONFIG.ambienceVolume, sfx:CONFIG.sfxVolume });
+  document.documentElement.classList.toggle('hide-cursor', !!CONFIG.hideCursor);
 }
 function saveSettings(){
-  try{ localStorage.setItem(SETTINGS_KEY, JSON.stringify({ masterVolume:CONFIG.masterVolume, musicVolume:CONFIG.musicVolume, ambienceVolume:CONFIG.ambienceVolume, sfxVolume:CONFIG.sfxVolume, idleSeconds:CONFIG.idleSeconds, homeReplaySeconds:CONFIG.homeReplaySeconds })); }catch(e){}
+  try{ localStorage.setItem(SETTINGS_KEY, JSON.stringify({ masterVolume:CONFIG.masterVolume, musicVolume:CONFIG.musicVolume, ambienceVolume:CONFIG.ambienceVolume, sfxVolume:CONFIG.sfxVolume, idleSeconds:CONFIG.idleSeconds, homeReplaySeconds:CONFIG.homeReplaySeconds, hideCursor:CONFIG.hideCursor })); }catch(e){}
 }
 loadSettings();
 
@@ -1462,7 +1480,17 @@ function renderSettings(){
   const st = document.getElementById('musicStatus');
   st.textContent = found ? 'พบไฟล์ music.mp3 — กำลังเล่นเพลง' : 'ไม่พบไฟล์ music.mp3 — เล่นเฉพาะเสียงบรรยากาศ';
   st.dataset.ok = found ? '1' : '0';
+  const cb = document.getElementById('hideCursor');
+  cb.setAttribute('aria-checked', CONFIG.hideCursor ? 'true' : 'false');
+  cb.querySelector('span').textContent = CONFIG.hideCursor ? 'ซ่อน' : 'แสดง';
 }
+document.getElementById('hideCursor').addEventListener('click', ()=>{
+  CONFIG.hideCursor = !CONFIG.hideCursor; saveSettings(); applySettings(); renderSettings(); Sound.ui && Sound.ui('tick');
+});
+document.getElementById('resetDefaults').addEventListener('click', ()=>{
+  ['masterVolume','musicVolume','ambienceVolume','sfxVolume','idleSeconds','homeReplaySeconds','hideCursor'].forEach(k=> CONFIG[k] = DEFAULTS[k]);
+  saveSettings(); applySettings(); renderSettings(); Sound.ui && Sound.ui('confirm');
+});
 SLIDERS.forEach(([k,bus])=>{
   const el = document.getElementById('s-'+k);
   el.addEventListener('input', ()=>{
